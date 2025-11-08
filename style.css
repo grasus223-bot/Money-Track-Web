@@ -1,0 +1,394 @@
+/*
+ * FINAL PERSONAL FINANCE TRACKER STYLESHEET
+ * Theme: TDakta Bhadhakta (Stylish, Teal/Gold)
+ * Font: Inter
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+    --primary-color: #00bfa5;   /* Teal/Aqua Green */
+    --secondary-color: #ff5252; /* Bright Red (for Expense/Error) */
+    --accent-color: #ffc400;    /* Gold/Amber (for CTA/Highlight) */
+    --background-color: #f0f4f8; /* Light Cool Grey */
+    --text-color: #333;
+    --shadow-premium: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------- */
+/* 1. HEADER AND NAVIGATION */
+/* ---------------------------------------------------- */
+
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-premium);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; }
+.nav-links { display: none; }
+.nav-links a {
+    color: white; text-decoration: none; margin: 0 18px; padding: 8px 0;
+    font-size: 1.1rem; font-weight: 600; border-bottom: 4px solid transparent;
+    transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+.nav-links a:hover { border-bottom-color: white; }
+.nav-links a.active { border-bottom-color: var(--accent-color); color: var(--accent-color); }
+
+.add-btn {
+    background-color: var(--accent-color); color: #333; border: none; padding: 12px 25px;
+    border-radius: 50px; cursor: pointer; font-weight: 700; font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;
+}
+.add-btn:hover { background-color: #ffb300; transform: scale(1.05); }
+
+/* ---------------------------------------------------- */
+/* 2. MAIN LAYOUT AND CARDS */
+/* ---------------------------------------------------- */
+
+.dashboard-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+.overview-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px; }
+.card {
+    background-color: white; padding: 30px; border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer; border-left: 8px solid transparent;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
+
+/* Card Colors */
+.balance-card { background: linear-gradient(135deg, var(--primary-color), #4db6ac); color: white; border-left: none; box-shadow: 0 15px 30px rgba(0, 191, 165, 0.4); }
+.balance-card p { color: white; }
+.expense-card { border-color: var(--secondary-color); }
+.expense-card p { color: var(--secondary-color); }
+.income-card { border-color: var(--primary-color); }
+.income-card p { color: var(--primary-color); }
+.savings-card { border-color: var(--accent-color); }
+.savings-card p { color: var(--accent-color); }
+
+/* Visualization */
+.visualization-area { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+@media (min-width: 900px) { .visualization-area { grid-template-columns: repeat(2, 1fr); } }
+
+.chart-box { background-color: white; padding: 25px; border-radius: 15px; box-shadow: var(--shadow-premium); }
+.placeholder { height: 300px; display: flex; align-items: center; justify-content: center; background-color: #fafafa; color: #777; border: 4px dashed #ccc; border-radius: 10px; font-weight: 600; font-size: 1.1em; }
+
+/* Panels */
+.quick-access { display: grid; grid-template-columns: 1fr; gap: 30px; }
+@media (min-width: 900px) { .quick-access { grid-template-columns: repeat(2, 1fr); } }
+
+.quick-panel { background-color: white; padding: 25px; border-radius: 15px; box-shadow: var(--shadow-premium); }
+.quick-panel h2 { font-size: 1.5rem; font-weight: 700; margin-top: 0; padding-bottom: 15px; border-bottom: 2px solid #eee; }
+
+/* ---------------------------------------------------- */
+/* 3. FUNCTIONAL / SPECIFIC STYLES */
+/* ---------------------------------------------------- */
+
+/* Form Input Styles */
+.form-input {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); transition: border-color 0.3s;
+}
+.form-input:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.2); }
+
+/* Table Styling */
+.table-header { padding: 15px 10px; background-color: #e0e0e0; text-align: left; font-size: 0.85em; font-weight: 800; color: #555; text-transform: uppercase; border-bottom: 2px solid #ccc; }
+#transactionTableBody tr:hover { background-color: #f5f5f5; }
+#transactionTableBody td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 0.95em; }
+.text-right { text-align: right; }
+
+/* Transaction List and Colors */
+#transactionList { list-style: none; padding: 0; }
+#transactionList li { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95em; }
+.fa-arrow-circle-down { color: var(--secondary-color); }
+.fa-arrow-circle-up { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.text-primary { color: var(--primary-color); }
+.amount { font-weight: 700; }
+
+/* Budget Progress Bar */
+.budget-item { margin-bottom: 20px; }
+.budget-item p { display: flex; justify-content: space-between; font-weight: 600; margin: 5px 0; }
+.progress-bar-container { background-color: #e0e0e0; height: 10px; border-radius: 5px; overflow: hidden; }
+.progress-bar { background-color: var(--accent-color); height: 100%; border-radius: 5px; transition: width 0.6s ease-in-out; }
+
+.view-all {
+    display: block; margin-top: 20px; text-align: center; color: var(--primary-color);
+    text-decoration: none; font-weight: 700; font-size: 1.1em; transition: letter-spacing 0.3s ease;
+}
+.view-all:hover { letter-spacing: 1px; }
+
+/* --- CUSTOM NOTIFICATION STYLES --- */
+
+#notification-area {
+    position: fixed; 
+    top: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    z-index: 1000;
+    opacity: 0; 
+    visibility: hidden;
+    transform: translateX(100%); 
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0.5s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.success-notification {
+    background: linear-gradient(90deg, var(--primary-color) 0%, #4db6ac 100%);
+    border-left: 5px solid var(--accent-color);
+}
+
+.error-notification {
+    background: linear-gradient(90deg, var(--secondary-color) 0%, #ff8a80 100%);
+    border-left: 5px solid white;
+}
+
+.notification-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); 
+}
+
+
+/* ---------------------------------------------------- */
+/* 4. FOOTER and RESPONSIVENESS */
+/* ---------------------------------------------------- */
+
+.footer { text-align: center; padding: 20px; margin-top: 40px; background-color: #e0e0e0; color: #616161; font-size: 0.85em; }
+@media (min-width: 768px) { .header { padding: 15px 60px; } .nav-links { display: flex; } }
+@media (max-width: 600px) {
+    .header { flex-direction: column; gap: 10px; }
+    .add-btn { width: 100%; }
+    .logo { margin-bottom: 5px; }
+    .card p { font-size: 2rem; }
+}
+
+/*
+ * FINAL PERSONAL FINANCE TRACKER STYLESHEET
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+    --primary-color: #00bfa5;   /* Teal/Aqua Green */
+    --secondary-color: #ff5252; /* Bright Red (for Expense/Error) */
+    --accent-color: #ffc400;    /* Gold/Amber (for CTA/Highlight) */
+    --background-color: #f0f4f8; /* Light Cool Grey */
+    --text-color: #333;
+    --shadow-premium: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* ---------------------------------------------------- */
+/* 1. HEADER AND NAVIGATION */
+/* ---------------------------------------------------- */
+
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-premium);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 1px; }
+.nav-links { display: none; }
+.nav-links a {
+    color: white; text-decoration: none; margin: 0 18px; padding: 8px 0;
+    font-size: 1.1rem; font-weight: 600; border-bottom: 4px solid transparent;
+    transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+.nav-links a:hover { border-bottom-color: white; }
+.nav-links a.active { border-bottom-color: var(--accent-color); color: var(--accent-color); }
+
+.add-btn {
+    background-color: var(--accent-color); color: #333; border: none; padding: 12px 25px;
+    border-radius: 50px; cursor: pointer; font-weight: 700; font-size: 1.05rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;
+}
+.add-btn:hover { background-color: #ffb300; transform: scale(1.05); }
+
+/* ---------------------------------------------------- */
+/* 2. MAIN LAYOUT AND CARDS */
+/* ---------------------------------------------------- */
+
+.dashboard-container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+.overview-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px; }
+.card {
+    background-color: white; padding: 30px; border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); transition: transform 0.5s ease, box-shadow 0.5s ease;
+    cursor: pointer; border-left: 8px solid transparent;
+}
+.card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
+
+/* Card Colors */
+.balance-card { background: linear-gradient(135deg, var(--primary-color), #4db6ac); color: white; border-left: none; box-shadow: 0 15px 30px rgba(0, 191, 165, 0.4); }
+.balance-card p { color: white; }
+.expense-card { border-color: var(--secondary-color); }
+.expense-card p { color: var(--secondary-color); }
+.income-card { border-color: var(--primary-color); }
+.income-card p { color: var(--primary-color); }
+.savings-card { border-color: var(--accent-color); }
+.savings-card p { color: var(--accent-color); }
+
+/* Visualization */
+.visualization-area { display: grid; grid-template-columns: 1fr; gap: 30px; margin-bottom: 40px; }
+@media (min-width: 900px) { .visualization-area { grid-template-columns: repeat(2, 1fr); } }
+
+.chart-box { background-color: white; padding: 25px; border-radius: 15px; box-shadow: var(--shadow-premium); }
+.placeholder { height: 300px; display: flex; align-items: center; justify-content: center; background-color: #fafafa; color: #777; border: 4px dashed #ccc; border-radius: 10px; font-weight: 600; font-size: 1.1em; }
+
+/* Panels */
+.quick-access { display: grid; grid-template-columns: 1fr; gap: 30px; }
+@media (min-width: 900px) { .quick-access { grid-template-columns: repeat(2, 1fr); } }
+
+.quick-panel { background-color: white; padding: 25px; border-radius: 15px; box-shadow: var(--shadow-premium); }
+.quick-panel h2 { font-size: 1.5rem; font-weight: 700; margin-top: 0; padding-bottom: 15px; border-bottom: 2px solid #eee; }
+
+/* ---------------------------------------------------- */
+/* 3. FUNCTIONAL / SPECIFIC STYLES */
+/* ---------------------------------------------------- */
+
+/* Form Input Styles */
+.form-input {
+    width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05); transition: border-color 0.3s;
+}
+.form-input:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 3px rgba(0, 191, 165, 0.2); }
+
+/* Table Styling */
+.table-header { padding: 15px 10px; background-color: #e0e0e0; text-align: left; font-size: 0.85em; font-weight: 800; color: #555; text-transform: uppercase; border-bottom: 2px solid #ccc; }
+#transactionTableBody tr:hover { background-color: #f5f5f5; }
+#transactionTableBody td { padding: 12px 10px; border-bottom: 1px solid #f0f0f0; font-size: 0.95em; }
+.text-right { text-align: right; }
+
+/* Transaction List and Colors */
+#transactionList { list-style: none; padding: 0; }
+#transactionList li { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.95em; }
+.fa-arrow-circle-down { color: var(--secondary-color); }
+.fa-arrow-circle-up { color: var(--primary-color); }
+.text-secondary { color: var(--secondary-color); }
+.text-primary { color: var(--primary-color); }
+.amount { font-weight: 700; }
+
+/* Budget Progress Bar */
+.budget-item { margin-bottom: 20px; }
+.budget-item p { display: flex; justify-content: space-between; font-weight: 600; margin: 5px 0; }
+.progress-bar-container { background-color: #e0e0e0; height: 10px; border-radius: 5px; overflow: hidden; }
+.progress-bar { background-color: var(--accent-color); height: 100%; border-radius: 5px; transition: width 0.6s ease-in-out; }
+
+.view-all {
+    display: block; margin-top: 20px; text-align: center; color: var(--primary-color);
+    text-decoration: none; font-weight: 700; font-size: 1.1em; transition: letter-spacing 0.3s ease;
+}
+.view-all:hover { letter-spacing: 1px; }
+
+/* --- CUSTOM NOTIFICATION STYLES (THE FIX) --- */
+
+#notification-area {
+    /* Set higher top value for better visibility below the fixed header */
+    position: fixed; 
+    top: 85px; /* ADJUSTED: Thoda aur neeche, header ke neeche */
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    z-index: 10000; /* SAFETY Z-INDEX: Taki kisi bhi element ke upar dikhe */
+    opacity: 0; 
+    visibility: hidden;
+    transform: translateX(100%); 
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out, visibility 0.5s;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.success-notification {
+    background: linear-gradient(90deg, var(--primary-color) 0%, #4db6ac 100%);
+    border-left: 5px solid var(--accent-color);
+}
+
+.error-notification {
+    background: linear-gradient(90deg, var(--secondary-color) 0%, #ff8a80 100%);
+    border-left: 5px solid white;
+}
+
+.notification-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); 
+}
+
+
+/* ---------------------------------------------------- */
+/* 4. FOOTER and RESPONSIVENESS */
+/* ---------------------------------------------------- */
+
+.footer { text-align: center; padding: 20px; margin-top: 40px; background-color: #e0e0e0; color: #616161; font-size: 0.85em; }
+@media (min-width: 768px) { .header { padding: 15px 60px; } .nav-links { display: flex; } }
+@media (max-width: 600px) {
+    .header { flex-direction: column; gap: 10px; }
+    .add-btn { width: 100%; }
+    .logo { margin-bottom: 5px; }
+    .card p { font-size: 2rem; }
+}
+
+
+
+/* --- Login Button Hover Style --- */
+.login-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white fill */
+    border-color: var(--accent-color) !important; /* Gold border on hover */
+}
+
+
+/* style.css में यह हिस्सा ज़रूरी है */
+#notification-area {
+    position: fixed; 
+    top: 85px; /* या 90px, ताकि header के नीचे दिखे */
+    right: 20px;
+    z-index: 10000; /* सबसे ऊपर दिखने के लिए */
+    opacity: 0; 
+    visibility: hidden;
+    /* ... (rest of the transition styles) ... */
+}
+
+.notification-show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); 
+}

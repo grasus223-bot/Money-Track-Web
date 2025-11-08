@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Track - Financial Reports</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    
+    </head>
+<body class="min-h-screen">
+    
+    <div id="notification-area" class="success-notification">
+        </div>
+    
+    <header class="header">
+        <div class="logo">💰 MONEY TRACK</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="budget.html">Budget</a>
+            <a href="reports.html" class="active">Reports</a>
+        </nav>
+        <a href="transactions.html" class="add-btn" style="text-decoration: none; display: inline-block;">
+            ➕ RECORD NEW
+        </a>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 25px;">📈 Financial Reports & Analysis</h1>
+
+        <section class="quick-panel" style="border-left: 8px solid var(--accent-color);">
+            <h2 style="font-size: 1.8rem; font-weight: 700;">Filter Transactions</h2>
+            
+            <form id="reportFilterForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                
+                <div>
+                    <label for="startDate" style="display: block; font-weight: 600; margin-bottom: 5px;">Start Date</label>
+                    <input type="date" id="startDate" class="form-input">
+                </div>
+                
+                <div>
+                    <label for="endDate" style="display: block; font-weight: 600; margin-bottom: 5px;">End Date</label>
+                    <input type="date" id="endDate" class="form-input">
+                </div>
+                
+                <div>
+                    <label for="categoryFilter" style="display: block; font-weight: 600; margin-bottom: 5px;">Category</label>
+                    <select id="categoryFilter" class="form-input">
+                        <option value="all">-- All Categories --</option>
+                        <option value="groceries">Groceries</option>
+                        <option value="rent">Rent / EMI</option>
+                        <option value="salary">Salary</option>
+                        <option value="travel">Travel</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="add-btn" style="background: var(--primary-color); color: white; font-size: 1.1em; padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s; align-self: end;">
+                    Run Report
+                </button>
+            </form>
+        </section>
+
+        <section class="overview-cards" style="margin-top: 30px;">
+            <div class="card balance-card">
+                <h3>Total Income (Filtered)</h3>
+                <p id="reportIncome">₹ 0.00</p>
+            </div>
+            <div class="card expense-card">
+                <h3>Total Expense (Filtered)</h3>
+                <p id="reportExpense">₹ 0.00</p>
+            </div>
+            <div class="card savings-card">
+                <h3>Net Flow (Filtered)</h3>
+                <p id="reportNetFlow">₹ 0.00</p>
+            </div>
+        </section>
+
+        <section class="quick-panel" style="margin-top: 30px;">
+            <h2 style="font-size: 1.8rem; font-weight: 700;">Expense Breakdown Chart (Filtered)</h2>
+            
+            <canvas id="reportCategoryChart" style="max-height: 350px; display: none;"></canvas>
+            
+            <div id="chartPlaceholderMessage" class="placeholder" style="height: 350px; display: flex; align-items: center; justify-content: center;">
+                 Run a report to see the expense breakdown chart.
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Money Track. All Rights Reserved.</p>
+    </footer>
+
+    <script src="transactions.js"></script> 
+    <script src="reports.js"></script>
+</body>
+</html>

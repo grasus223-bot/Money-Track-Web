@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Track - Transaction History</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="min-h-screen">
+    <div id="notification-area" class="success-notification">
+    </div>
+    
+
+    
+    <header class="header">
+        <div class="logo">💰 MONEY TRACK</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="transactions.html" class="active">Transactions</a>
+            <a href="budget.html">Budget</a>
+            <a href="reports.html">Reports</a>
+        </nav>
+        
+        <a href="transactions.html" class="add-btn" style="text-decoration: none; display: inline-block;">
+            ➕ RECORD NEW
+        </a>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 25px;">🗓️ Detailed Transaction Log</h1>
+
+        <section class="quick-panel" style="border-left: 8px solid var(--accent-color);">
+            <h2 style="font-size: 1.8rem; font-weight: 700;">Add New Expense / Income</h2>
+            <form id="transactionForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-top: 20px;">
+                
+                <div>
+                    <label for="type" style="display: block; font-weight: 600; margin-bottom: 5px;">Type</label>
+                    <select id="type" required class="form-input">
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="amount" style="display: block; font-weight: 600; margin-bottom: 5px;">Amount (₹)</label>
+                    <input type="number" id="amount" required placeholder="e.g., 500.00" class="form-input">
+                </div>
+                
+                <div>
+                    <label for="category" style="display: block; font-weight: 600; margin-bottom: 5px;">Category</label>
+                    <select id="category" required class="form-input">
+                        <option value="groceries">Groceries</option>
+                        <option value="rent">Rent / EMI</option>
+                        <option value="salary">Salary</option>
+                        <option value="travel">Travel / Fuel</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="description" style="display: block; font-weight: 600; margin-bottom: 5px;">Description</label>
+                    <input type="text" id="description" required placeholder="e.g., Monthly phone bill" class="form-input">
+                </div>
+
+                <button type="submit" class="add-btn" style="background: linear-gradient(135deg, var(--primary-color), #4db6ac); color: white; font-size: 1.1em; padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s; align-self: end;">
+                    Record Transaction
+                </button>
+            </form>
+        </section>
+
+        <section class="quick-panel">
+            <h2 style="font-size: 1.8rem; font-weight: 700;">Complete History List</h2>
+            
+            <div style="overflow-x: auto; margin-top: 20px;">
+                <table style="min-width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr>
+                            <th class="table-header">Date</th>
+                            <th class="table-header">Description</th>
+                            <th class="table-header">Category</th>
+                            <th class="table-header text-right">Amount (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTableBody">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Money Track. All Rights Reserved.</p>
+    </footer>
+
+    <script src="transactions.js"></script> 
+</body>
+</html>

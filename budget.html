@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Track - Budget Planner</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body class="min-h-screen">
+    
+    <div id="notification-area" class="success-notification">
+        </div>
+    
+    <header class="header">
+        <div class="logo">💰 MONEY TRACK</div>
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="budget.html" class="active">Budget</a>
+            <a href="reports.html">Reports</a>
+        </nav>
+        <a href="transactions.html" class="add-btn" style="text-decoration: none; display: inline-block;">
+            ➕ RECORD NEW
+        </a>
+    </header>
+
+    <main class="dashboard-container">
+        <h1 style="font-size: 2rem; font-weight: 800; margin-bottom: 25px;">🎯 Monthly Budget Planner</h1>
+
+        <section class="quick-panel" style="border-left: 8px solid var(--primary-color);">
+            <h2 style="font-size: 1.8rem; font-weight: 700;">Set a New Budget</h2>
+            
+            <form id="budgetForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                
+                <div>
+                    <label for="category" style="display: block; font-weight: 600; margin-bottom: 5px;">Category</label>
+                    <select id="category" name="category" required class="form-input">
+                        <option value="">-- Select Category --</option>
+                        <option value="Groceries">Groceries</option>
+                        <option value="Rent">Rent / EMI</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Entertainment">Entertainment</option>
+                        <option value="Other">Other Expenses</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="limit" style="display: block; font-weight: 600; margin-bottom: 5px;">Monthly Limit (₹)</label>
+                    <input type="number" id="limit" name="limit" required placeholder="e.g., 5000" class="form-input">
+                </div>
+                
+                <div>
+                    <label for="month" style="display: block; font-weight: 600; margin-bottom: 5px;">Month</label>
+                    <input type="month" id="month" name="month" class="form-input" required>
+                </div>
+
+                <button type="submit" class="add-btn" style="background: var(--primary-color); color: white; font-size: 1.1em; padding: 10px 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); transition: transform 0.3s; align-self: end;">
+                    Save Budget
+                </button>
+            </form>
+        </section>
+
+        <section class="quick-panel" style="margin-top: 30px;">
+            <h2 style="font-size: 1.8rem; font-weight: 700;">Active Budgets Status</h2>
+            
+            <ul id="budgetList" style="margin-top: 20px; list-style: none; padding: 0;">
+                 <li style="text-align: center; color: #777; padding: 20px;">No active budgets found. Set a new one above!</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Money Track. All Rights Reserved.</p>
+    </footer>
+
+    <script src="transactions.js"></script> 
+    <script src="budget.js"></script>
+</body>
+</html>

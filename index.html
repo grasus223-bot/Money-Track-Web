@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Track - Dashboard</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="min-h-screen">
+    
+    <header class="header">
+        <div class="logo">💰 MONEY TRACK</div>
+        
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="transactions.html">Transactions</a> 
+            <a href="budget.html">Budget</a>
+            <a href="reports.html">Reports</a>
+        </nav>
+
+        <div class="header-actions" style="display: flex; gap: 15px; align-items: center;">
+            
+            <a href="login.html" class="login-btn" style="
+                text-decoration: none;
+                color: white;
+                font-weight: 600;
+                padding: 12px 15px;
+                border: 2px solid white;
+                border-radius: 50px;
+                transition: background-color 0.3s;
+            ">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            
+            <a href="transactions.html" class="add-btn" style="text-decoration: none; display: inline-block;">
+                ➕ RECORD NEW
+            </a>
+        </div>
+        </header>
+
+    <main class="dashboard-container">
+        <section class="overview-cards">
+            <div class="card balance-card">
+                <h3>Total Balance</h3>
+                <p id="totalBalance">₹ 0.00</p>
+            </div>
+            <div class="card expense-card">
+                <h3>Monthly Expense</h3>
+                <p id="monthlyExpense">₹ 0.00</p>
+            </div>
+            <div class="card income-card">
+                <h3>Monthly Income</h3>
+                <p id="monthlyIncome">₹ 0.00</p>
+            </div>
+            <div class="card savings-card">
+                <h3>Net Savings</h3>
+                <p id="netSavings">₹ 0.00</p>
+            </div>
+        </section>
+
+        <section class="visualization-area">
+            <div class="chart-box">
+                <h2>Expense Category Breakdown 📊</h2>
+                <canvas id="categoryPieChart" style="max-height: 300px;"></canvas>
+            </div>
+            <div class="chart-box">
+                <h2>Monthly Cash Flow Trend 📈</h2>
+                <canvas id="cashFlowBarChart" style="max-height: 300px;"></canvas>
+            </div>
+        </section>
+        
+        <section class="quick-access">
+            <div class="quick-panel">
+                <h2 class="quick-panel h2">Recent Activity</h2>
+                <ul id="transactionList">
+                    </ul>
+                
+                <a href="transactions.html" class="view-all">VIEW FULL HISTORY →</a>
+            </div>
+            
+            <div class="quick-panel"> 
+                <h2 class="quick-panel h2">Budget Status</h2>
+                <div id="budgetStatusDisplay">
+                    <p style="text-align: center; color: #777;">Loading budgets...</p>
+                </div>
+                <a href="budget.html" class="view-all">VIEW ALL BUDGETS →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Money Track. All Rights Reserved.</p>
+    </footer>
+
+    <script src="transactions.js"></script>
+</body>
+</html>
