@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,3 +110,322 @@
 </body>
 
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-39QBKLEVG0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-39QBKLEVG0');
+</script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Track - Dashboard</title>
+    
+    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="min-h-screen">
+    
+    <header class="header">
+        <div class="logo">💰 MONEY TRACK</div>
+        
+        <nav class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="transactions.html">Transactions</a> 
+            <a href="budget.html">Budget</a>
+            <a href="reports.html">Reports</a>
+        </nav>
+
+        <div class="header-actions" style="display: flex; gap: 15px; align-items: center;">
+            
+            <a href="login.html" class="login-btn" style="
+                text-decoration: none;
+                color: white;
+                font-weight: 600;
+                padding: 12px 15px;
+                border: 2px solid white;
+                border-radius: 50px;
+                transition: background-color 0.3s;
+            ">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+            
+            <a href="transactions.html" class="add-btn" style="text-decoration: none; display: inline-block;">
+                ➕ RECORD NEW
+            </a>
+        </div>
+    </header>
+
+    <main class="dashboard-container">
+        <section class="overview-cards">
+            <div class="card balance-card">
+                <h3>Total Balance</h3>
+                <p id="totalBalance">₹ 0.00</p>
+            </div>
+            <div class="card expense-card">
+                <h3>Monthly Expense</h3>
+                <p id="monthlyExpense">₹ 0.00</p>
+            </div>
+            <div class="card income-card">
+                <h3>Monthly Income</h3>
+                <p id="monthlyIncome">₹ 0.00</p>
+            </div>
+            <div class="card savings-card">
+                <h3>Net Savings</h3>
+                <p id="netSavings">₹ 0.00</p>
+            </div>
+        </section>
+
+        <section class="visualization-area">
+            <div class="chart-box">
+                <h2>Expense Category Breakdown 📊</h2>
+                <canvas id="categoryPieChart" style="max-height: 300px;"></canvas>
+            </div>
+            <div class="chart-box">
+                <h2>Monthly Cash Flow Trend 📈</h2>
+                <canvas id="cashFlowBarChart" style="max-height: 300px;"></canvas>
+            </div>
+        </section>
+        
+        <section class="quick-access">
+            <div class="quick-panel">
+                <h2 class="quick-panel h2">Recent Activity</h2>
+                <ul id="transactionList">
+                    </ul>
+                
+                <a href="transactions.html" class="view-all">VIEW FULL HISTORY →</a>
+            </div>
+            
+            <div class="quick-panel"> 
+                <h2 class="quick-panel h2">Budget Status</h2>
+                <div id="budgetStatusDisplay">
+                    <p style="text-align: center; color: #777;">Loading budgets...</p>
+                </div>
+                <a href="budget.html" class="view-all">VIEW ALL BUDGETS →</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Money Track. All Rights Reserved.</p>
+    </footer>
+
+    <script src="transactions.js"></script>
+
+<!-- ============= MoneyTrack Chatbot (ENGLISH only, website-aware) =============
+     Paste this block just before </body> to replace your existing chatbot.
+     It uses:
+     - keyword + phrase matching for many MoneyTrack questions
+     - dynamic answers for "balance" and "recent activity" by reading DOM
+     - fallback that suggests pages or shows help
+============================================================================= -->
+<div id="chatbot-btn" aria-label="Open chat">💬</div>
+
+<form id="chatbot-box" onsubmit="return false;" aria-label="MoneyTrack chat" autocomplete="off">
+  <div id="chatbot-header">MoneyTrack Assistant</div>
+  <div id="chatbot-messages" role="log" aria-live="polite"></div>
+  <div id="chatbot-input-row">
+    <input id="chatbot-input" type="text" placeholder="Ask me anything about this site..." aria-label="Type your message">
+    <button id="chatbot-send" type="submit" aria-label="Send message">Send</button>
+  </div>
+</form>
+
+<style>
+/* Chatbot basic styles */
+#chatbot-btn{position: fixed; bottom: 20px; right: 20px; background: #007bff; color: white; padding: 15px; border-radius: 50%; cursor: pointer; font-size: 22px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 9999;}
+#chatbot-box{position: fixed; bottom: 80px; right: 20px; width: 340px; background: white; border: 2px solid #007bff; border-radius: 10px; display: none; flex-direction: column; box-shadow: 0 4px 20px rgba(0,0,0,0.2); z-index: 9999; max-height: 480px;}
+#chatbot-header{background: #007bff; color: white; padding: 10px; text-align: center; border-radius: 10px 10px 0 0; font-weight: 600;}
+#chatbot-messages{height: 320px; padding: 10px; overflow-y: auto; font-size: 14px; background: #fafafa;}
+#chatbot-input-row{display:flex; gap:6px; padding:8px; border-top:1px solid #eee; align-items: center;}
+#chatbot-input{flex:1; border:1px solid #ddd; border-radius: 6px; padding:8px 10px; outline:none; font-size:14px;}
+#chatbot-send{background:#007bff; color:white; border:none; padding:8px 12px; border-radius:6px; cursor:pointer; font-weight:600;}
+</style>
+
+<script>
+/* ---------- UI elements ---------- */
+const chatBtn = document.getElementById('chatbot-btn');
+const chatBox = document.getElementById('chatbot-box');
+const chatMessages = document.getElementById('chatbot-messages');
+const chatInput = document.getElementById('chatbot-input');
+const chatSend = document.getElementById('chatbot-send');
+
+/* toggle chat open/close */
+chatBtn.addEventListener('click', () => {
+  if (chatBox.style.display === 'flex') { chatBox.style.display = 'none'; }
+  else { chatBox.style.display = 'flex'; setTimeout(()=>chatInput.focus(), 120); }
+});
+
+/* basic helper: escape HTML */
+function escapeHtml(s){ return String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;'); }
+
+/* append message */
+function appendMessage(text, who){
+  const el = document.createElement('div');
+  el.style.margin = '8px 0';
+  if (who === 'user') el.innerHTML = `<div style="text-align:right;"><b>You:</b> ${escapeHtml(text)}</div>`;
+  else el.innerHTML = `<div style="text-align:left;"><b>Assistant:</b> ${escapeHtml(text)}</div>`;
+  chatMessages.appendChild(el);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+/* typing indicator */
+function showTyping(){
+  const t = document.createElement('div'); t.id = 'typing-indicator';
+  t.style.margin = '8px 0'; t.innerHTML = `<div style="text-align:left;color:#666;"><i>Assistant is typing...</i></div>`;
+  chatMessages.appendChild(t); chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function removeTyping(){ const t = document.getElementById('typing-indicator'); if(t) t.remove(); }
+
+/* ---------- SITE-AWARE helper functions ---------- */
+/* read total balance from the page if element exists */
+function getSiteBalance(){
+  const el = document.getElementById('totalBalance');
+  if (!el) return null;
+  return el.textContent.trim();
+}
+/* count recent transactions shown in the transactionList (if present) */
+function getRecentActivityCount(){
+  const list = document.getElementById('transactionList');
+  if (!list) return null;
+  return list.children.length;
+}
+
+/* ---------- Knowledge base: keyword patterns + responses (ENGLISH) ---------- */
+/* This array is checked top-to-bottom; each entry has keywords (any match) and response.
+   Responses may be strings or functions returning strings (for dynamic site-aware replies). */
+const KB = [
+  { keys: ['how do i add','add expense','add income','record new','new transaction','how to add'], 
+    resp: "To add a new transaction, click the RECORD NEW button or open Transactions → enter amount, category, date and save." },
+
+  { keys: ['where get balance','total balance','balance'], 
+    resp: () => {
+      const b = getSiteBalance();
+      if (b) return `Your current Total Balance on this page is ${b}.`;
+      return "I cannot read the balance right now, but you can see Total Balance on the dashboard (top-left card).";
+    }
+  },
+
+  { keys: ['transactions','view transactions','transaction history','history'],
+    resp: "Open the Transactions page (top nav → Transactions) to view, edit or delete individual records. Use VIEW FULL HISTORY on the dashboard for complete list." },
+
+  { keys: ['budget','budgets','how to budget'],
+    resp: "Go to the Budget page to create and manage budgets. Create a budget for a category, set a limit, and track progress on the Budget page." },
+
+  { keys: ['reports','charts','analytics','graphs'],
+    resp: "Reports page shows charts and trends. On the dashboard you also have quick charts: category breakdown and monthly cash flow." },
+
+  { keys: ['export','download','csv','backup'],
+    resp: "This site does not currently include a built-in export. You can copy data from Transactions page or use browser devtools to export if needed. I can guide step-by-step if you want." },
+
+  { keys: ['edit transaction','edit','delete transaction','remove record'],
+    resp: "To edit or delete a transaction open the Transactions page, find the row and use the edit/delete controls provided there." },
+
+  { keys: ['login','sign in','account'],
+    resp: "Click the Login button on the top-right to sign in. If you do not have an account, follow the sign-up flow on the login page (if implemented)." },
+
+  { keys: ['where save','localstorage','save data','data stored','storage'],
+    resp: "Transactions are stored in your browser (localStorage) on this site. If you clear browser data, transactions may be lost unless the site provides export." },
+
+  { keys: ['currency','rupee','₹'],
+    resp: "This site displays values in Indian Rupees (₹) by default. You can modify the code to show another currency if needed." },
+
+  { keys: ['mobile','phone','responsive'],
+    resp: "The UI is responsive. On small screens the layout adapts — but for best experience use a modern mobile browser." },
+
+  { keys: ['how to use','help','how do i','guide'],
+    resp: "I can help with adding transactions, budgets, and reading reports. Example questions: 'How do I add an expense?', 'Where is my balance?', 'How to create a budget?'" },
+
+  { keys: ['recent activity','recent','recent transactions'],
+    resp: () => {
+      const n = getRecentActivityCount();
+      if (n !== null) return `I see ${n} recent transaction item(s) listed on this dashboard. Visit Transactions page for full history.`;
+      return "I cannot read recent activity on this page right now, please open the Transactions page.";
+    }
+  },
+
+  { keys: ['reset data','clear data','delete all'],
+    resp: "To clear all stored transactions you will need to clear the site's data in your browser (localStorage) or use a Clear Data button if available on the site. Be careful — this is irreversible." },
+
+  { keys: ['privacy','policy','data policy'],
+    resp: "This is a client-side app; data typically remains in your browser. Check the site's privacy policy or the project README on GitHub for exact details." },
+
+  { keys: ['github','source','code','repo'],
+    resp: "This project is hosted on GitHub Pages. You can find source code in the project's GitHub repository (check the link you used to open the site)." },
+
+  { keys: ['contact','support','feedback'],
+    resp: "If you want to contact the developer, open the project's GitHub page and use Issues or the contact info provided there. I can show steps to open an issue if you want." },
+
+  { keys: ['default','fallback','nothing'],
+    resp: "If you mean a specific action on the site, please ask in a short sentence like: 'How do I add an expense?' or 'Where is my balance?'" }
+];
+
+/* ---------- main reply selection ---------- */
+function findBestReply(text){
+  const lc = text.toLowerCase();
+  // First try exact meaningful matches: check each KB entry for any keyword presence
+  for (const item of KB){
+    for (const k of item.keys){
+      if (lc.includes(k)) {
+        if (typeof item.resp === 'function') {
+          try { return item.resp(); } catch(e){ return "Sorry, I couldn't access that information."; }
+        } else return item.resp;
+      }
+    }
+  }
+  // If no KB match, try short heuristics:
+  if (lc.includes('balance') || lc.includes('total balance')) {
+    const b = getSiteBalance(); if (b) return `Your current Total Balance on this page is ${b}.`;
+    return "I cannot read the balance right now, but the Total Balance card on the dashboard shows it.";
+  }
+  if (lc.includes('add') && (lc.includes('expense') || lc.includes('income') || lc.includes('transaction'))) {
+    return "To add a transaction click RECORD NEW or go to Transactions → fill the form and save.";
+  }
+  // fallback: try to be helpful and offer pages
+  return "Sorry, I don't have a direct answer. Try asking: 'How to add expense?', 'Where is the Transactions page?', or 'What is my balance?'.";
+}
+
+/* ---------- sending flow ---------- */
+function respondToUser(rawText){
+  const text = rawText.trim();
+  if (!text) return;
+  appendMessage(text, 'user');
+  chatInput.value = '';
+  showTyping();
+  // simulate slight delay then reply
+  setTimeout(() => {
+    removeTyping();
+    const reply = findBestReply(text);
+    appendMessage(reply, 'bot');
+  }, 500);
+}
+
+/* send handlers */
+chatSend.addEventListener('click', (e) => { e.preventDefault(); respondToUser(chatInput.value); });
+chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); respondToUser(chatInput.value); } });
+
+/* close when clicking outside */
+document.addEventListener('click', (e) => {
+  const target = e.target;
+  if (!chatBox.contains(target) && !chatBtn.contains(target)) {
+    if (chatBox.style.display === 'flex') chatBox.style.display = 'none';
+  }
+});
+
+/* optional: preload a welcome message */
+setTimeout(()=>appendMessage("Hi — I'm the MoneyTrack Assistant. Ask me anything about this site (e.g. 'How do I add an expense?')", 'bot'), 700);
+</script>
+
+</body>
+</html>
+>>>>>>> 29c06b5 (Finalizing Git setup)
